@@ -62,7 +62,8 @@
 (require 'dired-details)
 (require 'helm-adaptative)
 (helm-adaptative-mode)
-
+  ;; Highlighting in editmsg-buffer for magit
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . fundamental-mode))
 (setq dired-details-propagate-flag t)
 
 (add-to-list 'package-archives
@@ -108,92 +109,6 @@
 ;; ;; (evil-mode 1)
 
 
-(progn
-  (defun tmr-spork-shell ()
-    "Invoke spork shell" ; Spork - love that name
-    (interactive)
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "spork")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n"); makes sure rvm variables set with .rvmrc
-    (process-send-string nil "spork\n"))
-
-  (defun tmr-devlog-shell ()
-    "Tail the development log, shell"
-    (interactive)
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "devlog")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n"); makes sure rvm variables set with .rvmrc
-    (process-send-string nil "tail -f log/development.log\n"))
-
-  (defun tmr-testlog-shell ()
-    "Tail the test log, shell"
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "testlog")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n"); makes sure rvm variables set with .rvmrc
-    (process-send-string nil "tail -f log/test.log\n"))
-
-  (defun tmr-server-shell ()
-    "Invoke rails ui server shell"
-    (interactive)
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "server")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n"); makes sure rvm variables set with .rvmrc
-    (process-send-string nil "rails s\n"))
-
-  (defun tmr-db-shell ()
-    "Invoke rails dbconsole shell"
-    (interactive)
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "dbconsole")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n"); makes sure rvm variables set with .rvmrc
-    (process-send-string nil "rails dbconsole\n"))
-
-  (defun tmr-console-shell ()
-    "Invoke rails console shell"
-    (interactive)
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "console")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n"); makes sure rvm variables set with .rvmrc
-    (process-send-string nil "rails console\n"))
-
-                                        ; I like to run all my tests in the same shell
-  (defun tmr-rspec-shell ()
-    "Invoke rspec shell"
-    (interactive)
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "rspec")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n"); makes sure rvm variables set with .rvmrc
-    (process-send-string nil "rspec spec\n")) ; This is debatable, since spork wont be up yet
-
-                                        ; The shell where I do most of my work
-  (defun tmr-shell ()
-    "Invoke plain old shell"
-    (interactive)
-    (pop-to-buffer (get-buffer-create (generate-new-buffer-name "sh")))
-    (shell (current-buffer))
-    (process-send-string nil "cd .\n")); makes sure rvm variables set with .rvmrc
-
-                                        ; My everyday ide
-  (defun tmr-ide-lite ()
-    "Spawn several shells for a mini Rails IDE"
-    (interactive)
-    (progn (tmr-spork-shell)
-           (tmr-shell)
-           (tmr-server-shell)
-           (tmr-rspec-shell)))
-
-                                        ; When I am doing a big debug session
-  (defun tmr-ide-full ()
-    "Spawn several shells for a full Rails IDE"
-    (interactive)
-    (progn (tmr-spork-shell)
-           (tmr-shell)
-           (tmr-server-shell)
-           (tmr-console-shell)
-           (tmr-db-shell)
-           (tmr-devlog-shell)
-           (tmr-testlog-shell)
-           (tmr-rspec-shell))))
 (add-hook 'after-init-hook 'server-start)
 (add-hook 'server-done-hook
           (lambda ()
@@ -232,6 +147,14 @@
 
 (eval-after-load 'windmove (lambda () (windmove-default-keybindings)))
 (undo-tree-mode -1 )
+(global-set-key (kbd "H-<left>") 'elscreen-previous)
+(global-set-key (kbd "H-<right>") 'elscreen-next)
+(global-set-key (kbd "H-S-<down>") 'elscreen-clone)
+(global-set-key (kbd "H-k") 'elscreen-kill)
+(global-set-key (kbd "H-<up>") 'elscreen-swap)
+(global-set-key (kbd "H-<down>") 'elscreen-create)
+
+(global-set-key (kbd "C-c C-c") 'server-edit)
 
 (defun indent-def ()
   (interactive)
@@ -241,6 +164,7 @@
     (widen)))
 
 (progn
+
   (define-key global-map (kbd "M-z") 'dired-jump)
   (define-key global-map (kbd "H-t") 'toggle-truncate-lines)
   (define-key global-map (kbd "s-k") '(lambda () (interactive) (kill-buffer-if-not-modified (current-buffer))))
