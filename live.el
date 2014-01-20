@@ -154,6 +154,9 @@
 (global-set-key (kbd "H-<up>") 'elscreen-swap)
 (global-set-key (kbd "H-<down>") 'elscreen-create)
 
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "H-r") 'helm-show-kill-ring)
+
 (global-set-key (kbd "C-c C-c") 'server-edit)
 
 (defun indent-def ()
