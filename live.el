@@ -60,6 +60,9 @@
 (require 'ruby-tools)
 (require 'evil)
 (require 'dired-details)
+(require 'helm-adaptative)
+(helm-adaptative-mode)
+
 (setq dired-details-propagate-flag t)
 
 (add-to-list 'package-archives
