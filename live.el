@@ -2,6 +2,7 @@
       mac-command-modifier 'meta
       mac-option-modifier 'hyper
       mac-function-modifier 'super
+      debug-on-quit t
       truncate-lines t)
 
 (dolist (mode '(ruby espresso))
@@ -19,9 +20,9 @@
                     git-blame
                     git-gutter+
                     git-commit-mode
+                    key-chord
                     dired-details
                     goto-last-change
-                    enotify
                     helm-projectile
                     helm
                     js2-mode
@@ -61,15 +62,11 @@
 (require 'evil)
 (require 'dired-details)
 (require 'helm-adaptative)
+
 (helm-adaptative-mode)
   ;; Highlighting in editmsg-buffer for magit
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . fundamental-mode))
 (setq dired-details-propagate-flag t)
-
-(add-to-list 'package-archives
-             '("gnu" . "http://elpa.gnu.org/packages/")
-             '("marmalade" .      "http://marmalade-repo.org/packages/")
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (progn
   (defvar active-project "~/DEV/gems/search_resource")
@@ -157,7 +154,12 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "H-r") 'helm-show-kill-ring)
 
-(global-set-key (kbd "C-c C-c") 'server-edit)
+(global-set-key (kbd "s-k") '(lambda () (interactive) (kill-buffer (current-buffer))))
+(global-set-key (kbd "C-c C-v") '(lambda ()
+                                       (interactive)
+                                       (progn
+                                         (save-buffer)
+                                         (server-edit ))))
 
 (defun indent-def ()
   (interactive)
@@ -188,3 +190,18 @@
   ;; This is your old M-x.
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
   (live-add-packs '(~/.live-packs/hooptie45-pack)))
+
+(evil-mode)
+(require 'key-chord)
+(key-chord-mode 1)
+
+(define-key evil-normal-state-map "c" nil)
+(define-key evil-motion-state-map "cu" 'universal-argument)
+(define-key key-translation-map (kbd "ch") (kbd "C-h"))
+(define-key key-translation-map (kbd "cx") (kbd "C-x"))
+
+(key-chord-define-global "vv" 'evil-force-normal-state)
+(key-chord-define evil-normal-state-map ",," 'evil-force-normal-state)
+(key-chord-define evil-visual-state-map ",," 'evil-change-to-previous-state)
+(key-chord-define evil-insert-state-map ",," 'evil-normal-state)
+(key-chord-define evil-replace-state-map ",," 'evil-normal-state)
