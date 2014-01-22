@@ -191,7 +191,9 @@
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
   (live-add-packs '(~/.live-packs/hooptie45-pack)))
 
-(evil-mode)
+(evil-mode -1)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
 (require 'key-chord)
 (key-chord-mode 1)
 
