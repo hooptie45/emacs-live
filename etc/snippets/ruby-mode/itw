@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: itw
+# key: itw
+# binding: direct-keybinding
+# --
+it "will $1" do
+  $0
+end

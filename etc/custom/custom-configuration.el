@@ -8,6 +8,7 @@
  '(cua-global-mark-blink-cursor-interval 0.3)
  '(cua-normal-cursor-color "lime green")
  '(evil-default-cursor (quote (t)))
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(sclang-auto-scroll-post-buffer t)
  '(sclang-eval-line-forward nil))
 (custom-set-faces
@@ -15,7 +16,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "light gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 105 :width normal :foundry "apple" :family "Menlo"))))
  '(cursor ((t (:background "lime green"))))
  '(diff-added ((t (:foreground "Green"))))
  '(diff-removed ((t (:foreground "Red"))))
