@@ -1,1 +1,1 @@
-("~/DEV/gems/conditions/")
+("~/resourse/" "~/DEV/gems/conditions/")
