@@ -183,7 +183,7 @@
   (global-set-key (kbd "M-S-<up>") 'projectile-toggle-between-implementation-and-test)
   (global-set-key (kbd "s-/") 'indent-def)
 
-  (global-set-key (kbd "M-z") 'helm-projectile)
+  (global-set-key (kbd "C-z C-z") 'helm-projectile)
   (global-set-key (kbd "M-x") 'smex)
 
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -192,7 +192,9 @@
   (live-add-packs '(~/.live-packs/hooptie45-pack)))
 
 (evil-mode -1)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
+(global-set-key (kbd "M-z") 'dired-jump)
+(global-set-key (kbd "s-k") '(lambda () (interactive) (kill-buffer (current-buffer))))
 
 (require 'key-chord)
 (key-chord-mode 1)
