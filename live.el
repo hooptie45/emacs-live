@@ -18,6 +18,7 @@
                     evil-paredit
                     evil
                     git-blame
+                    workgroups
                     git-gutter+
                     git-commit-mode
                     key-chord
@@ -211,3 +212,6 @@
 ;; (key-chord-define-global "gg" 'magit-status)
 ;; (global-set-key (kbd "C-x C-c") nil)
 ;; (global-set-key (kbd "C-x C-c") nil)
+(require 'workgroups)
+
+(workgroups-mode 1)
