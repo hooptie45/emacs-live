@@ -219,10 +219,11 @@
   (if (and paredit-mode (equal (substring str -1) ")"))
       (progn (backward-delete-char 1) (forward-char))))
 (ad-activate 'he-substitute-string)
-;; (key-chord-define evil-insert-state-map ",," 'evil-normal-state)
-;; (key-chord-define evil-replace-state-map ",," 'evil-normal-state)
-;; (key-chord-define-global "gg" 'magit-status)
-;; (global-set-key (kbd "C-x C-c") nil)
+
+(global-set-key (kbd "C-x C-c") nil)
+(global-set-key (kbd "C-x C-c") (lambda () (interactive) (progn (save-buffer) (server-edit))))
+
+
 ;; (global-set-key (kbd "C-x C-c") nil)
 (require 'workgroups)
 
