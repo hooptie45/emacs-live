@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-interval 0.3)
+ '(coffee-tab-width 2)
  '(cua-enable-cursor-indications t)
  '(cua-global-mark-blink-cursor-interval 0.3)
  '(cua-normal-cursor-color "lime green")
