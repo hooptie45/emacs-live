@@ -76,7 +76,7 @@
     (interactive)
     (find-file active-project))
 
-  (defun set-active-project ()
+  (defun make-current-the-active-project ()
     (interactive)
   (defun make-current-the-active-project ()
     (interactive)
@@ -84,17 +84,17 @@
 	  (when (y-or-n-p (format "Make %s the active project?" default-directory))
 	    (setq active-project default-directory))))
     (setq active-project
-          (ido-completing-read "PROJECT: "
-                               (--filter (not (or (string= it "..")
-                                                  (string= it ".")
-                                                  (string= it ".DS_Store")))
-                                         (directory-files (expand-file-name "~/DEV"))))))
+	  (when (y-or-n-p (format "Make %s the active project?" default-directory))
+	    (setq active-project default-directory))))
 
-  (defun current-active-project ()
+  (defun set-active-project ()
     (interactive)
-    (let ((curr (file-name-directory (buffer-file-name (current-buffer)))))
-      (progn  (setq active-project curr)
-              (message "setting project to %s" curr)))))
+    (setq active-project
+	  (ido-completing-read "PROJECT: "
+			       (--filter (not (or (string= it "..")
+						  (string= it ".")
+						  (string= it ".DS_Store")))
+					 (directory-files (expand-file-name "~/DEV")))))))
 
 (global-set-key (kbd "<f8>") 'set-active-project)
 (global-set-key (kbd "C-c p") 'current-active-project)
