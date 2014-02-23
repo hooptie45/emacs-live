@@ -78,6 +78,11 @@
 
   (defun set-active-project ()
     (interactive)
+  (defun make-current-the-active-project ()
+    (interactive)
+    (setq active-project
+	  (when (y-or-n-p (format "Make %s the active project?" default-directory))
+	    (setq active-project default-directory))))
     (setq active-project
           (ido-completing-read "PROJECT: "
                                (--filter (not (or (string= it "..")
@@ -94,6 +99,7 @@
 (global-set-key (kbd "<f8>") 'set-active-project)
 (global-set-key (kbd "C-c p") 'current-active-project)
 (global-set-key (kbd "RET") 'paredit-newline)
+(global-set-key (kbd "<f10>") 'make-current-the-active-project)
 (global-set-key (kbd "H-g") 'goto-active-project)
 (global-set-key (kbd "C-x h") 'help)
 (global-set-key (kbd "H-s") 'fixup-whitespace)
