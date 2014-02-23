@@ -14,29 +14,29 @@
 (require 'package)
 
 (setq package-list '(elscreen
-                    evil-leader
-                    evil-paredit
-                    evil
-                    git-blame
-                    workgroups
-                    git-gutter+
-                    git-commit-mode
-                    key-chord
-                    dired-details
-                    goto-last-change
-                    helm-projectile
-                    helm
-                    js2-mode
-                    paredit
-                    projectile
-                    pkg-info
-                    epl
-                    dash
-                    ruby-end
-                    ruby-hash-syntax
-                    ruby-tools
-                    s
-                    undo-tree))
+		    evil-leader
+		    evil-paredit
+		    evil
+		    git-blame
+		    workgroups
+		    git-gutter+
+		    git-commit-mode
+		    key-chord
+		    dired-details
+		    goto-last-change
+		    helm-projectile
+		    helm
+		    js2-mode
+		    paredit
+		    projectile
+		    pkg-info
+		    epl
+		    dash
+		    ruby-end
+		    ruby-hash-syntax
+		    ruby-tools
+		    s
+		    undo-tree))
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
@@ -230,3 +230,5 @@
 (add-hook 'ruby-mode-hook 'ruby-end-mode)
 
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
+
+(global-set-key (kbd "C-h") 'help)
