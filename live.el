@@ -200,7 +200,11 @@
 
 (require 'key-chord)
 (key-chord-mode 1)
-(key-chord-define global-map "gg" 'magit-status)
+
+(defmacro la (&rest body)
+  `(lambda () (interactive) (progn ,@body)))
+
+(key-chord-define global-map "gg"  (la (save-some-buffers) (magit-status default-directory)))
 
 (defadvice he-substitute-string (after he-paredit-fix)
   "remove extra paren when expanding line in paredit"
