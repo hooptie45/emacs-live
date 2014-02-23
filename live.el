@@ -201,6 +201,12 @@
 
 (require 'key-chord)
 (key-chord-mode 1)
+(key-chord-define global-map "gg" 'magit-status)
+
+;; ;; (define-key evil-normal-state-map "c" )
+;; ;; (define-key evil-motion-state-map "cu" 'universal-argument)
+;; ;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
+;; ;; (define-key key-translation-map (kbd "cx") (kbd "C-x"))
 
 (defmacro la (&rest body)
   `(lambda () (interactive) (progn ,@body)))
