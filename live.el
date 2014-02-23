@@ -66,7 +66,6 @@
 
 (helm-adaptative-mode)
   ;; Highlighting in editmsg-buffer for magit
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . fundamental-mode))
 (setq dired-details-propagate-flag t)
 
 (progn
@@ -224,3 +223,5 @@
 (add-hook 'ruby-mode-hook 'projectile-mode)
 (add-hook 'ruby-mode-hook 'paredit-mode)
 (add-hook 'ruby-mode-hook 'ruby-end-mode)
+
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
