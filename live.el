@@ -240,13 +240,15 @@
   (add-to-list 'load-path (f-expand "vendor/Enhanced-Ruby-Mode/" dotfiles-dir))
   (add-to-list 'load-path (f-expand "vendor/emacs-pry/" dotfiles-dir)))
 
+
+
 (require 'ruby-mode)
 (require 'pry)
 (add-hook 'ruby-mode-hook 'projectile-mode)
 (add-hook 'ruby-mode-hook 'paredit-mode)
 (add-hook 'ruby-mode-hook 'ruby-end-mode)
 
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit))
 
 (global-set-key (kbd "C-x C-h") 'help)
 (setq dired-details-propagate-flag t)
