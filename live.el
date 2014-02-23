@@ -243,3 +243,6 @@
 (require 'jade-mode)
 
 (add-to-list 'auto-mode-alist '("jade$" . jade-mode))
+
+(setq-default debug-on-error nil
+              debug-on-quit nil)
