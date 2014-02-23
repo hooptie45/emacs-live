@@ -203,8 +203,10 @@
 (global-set-key (kbd "M-z") 'dired-jump)
 (global-set-key (kbd "s-k") '(lambda () (interactive) (kill-buffer (current-buffer))))
 
-;; (require 'key-chord)
-;; (key-chord-mode 1)
+(require 'key-chord)
+(key-chord-mode 1)
+(key-chord-define global-map "gg" 'magit-status)
+
 ;; ;; (define-key evil-normal-state-map "c" )
 ;; ;; (define-key evil-motion-state-map "cu" 'universal-argument)
 ;; ;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
