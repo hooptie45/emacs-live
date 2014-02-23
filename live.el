@@ -137,10 +137,6 @@
 
 
 (setq-default truncate-lines t)
-(add-hook 'ruby-mode-hook 'projectile-mode)
-(add-hook 'ruby-mode-hook 'paredit-mode)
-(add-hook 'ruby-mode-hook 'ruby-end-mode)
-
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 
@@ -228,3 +224,15 @@
 (require 'workgroups)
 
 (workgroups-mode 1)
+
+(defvar dotfiles-dir (f-expand "~/.emacs.d"))
+
+(let ((dotfiles-dir "~/.emacs.d"))
+  (add-to-list 'load-path (f-expand "vendor/Enhanced-Ruby-Mode/" dotfiles-dir))
+  (add-to-list 'load-path (f-expand "vendor/emacs-pry/" dotfiles-dir)))
+
+(require 'ruby-mode)
+(require 'pry)
+(add-hook 'ruby-mode-hook 'projectile-mode)
+(add-hook 'ruby-mode-hook 'paredit-mode)
+(add-hook 'ruby-mode-hook 'ruby-end-mode)
