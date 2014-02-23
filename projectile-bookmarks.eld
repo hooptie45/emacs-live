@@ -1,1 +1,1 @@
-("~/resourse/" "~/DEV/gems/conditions/")
+("~/pivot_resource/on-board/" "~/resourse/" "~/pivot_resource/" "~/resourse/rails-dev-box/" "~/.rvm/gems/ruby-2.0.0-p247/gems/tire-0.6.2/" "~/state_machine/" "~/DEV/gems/search_resource/" "~/DEV/gems/conditions/")
