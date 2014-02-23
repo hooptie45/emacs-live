@@ -203,18 +203,6 @@
 (key-chord-mode 1)
 (key-chord-define global-map "gg" 'magit-status)
 
-;; ;; (define-key evil-normal-state-map "c" )
-;; ;; (define-key evil-motion-state-map "cu" 'universal-argument)
-;; ;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
-;; ;; (define-key key-translation-map (kbd "cx") (kbd "C-x"))
-
-;; (key-chord-define-global "vv" 'evil-force-normal-state)
-;; (key-chord-define evil-normal-state-map ",," 'evil-force-normal-state)
-;; (key-chord-define evil-visual-state-map ",," 'evil-change-to-previous-state)
-;; optional suggestions
-
-;; If you use paredit or something to add closing parens then hippie expand line can be problematic because you will end up with an extra closing paren. This could should fix that
-
 (defadvice he-substitute-string (after he-paredit-fix)
   "remove extra paren when expanding line in paredit"
   (if (and paredit-mode (equal (substring str -1) ")"))
