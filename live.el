@@ -241,3 +241,5 @@
 (add-hook 'ruby-mode-hook 'ruby-end-mode)
 
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
+
+(global-set-key (kbd "C-h") 'help)
