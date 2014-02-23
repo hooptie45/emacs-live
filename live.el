@@ -16,6 +16,8 @@
 (setq package-list '(elscreen
 		    evil-leader
 		    evil-paredit
+                    jade-mode
+                    sws-mode
 		    evil
 		    git-blame
 		    workgroups
@@ -237,3 +239,7 @@
 (dired-details-install)
 
 (turn-on-undo-tree-mode)
+(require 'sws-mode)
+(require 'jade-mode)
+
+(add-to-list 'auto-mode-alist '("jade$" . jade-mode))
