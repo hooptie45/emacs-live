@@ -241,10 +241,3 @@
 (add-hook 'ruby-mode-hook 'ruby-end-mode)
 
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
-
-(global-set-key (kbd "C-x C-h") 'help)
-(setq dired-details-propagate-flag t)
-
-(dired-details-install)
-
-(turn-on-undo-tree-mode)
