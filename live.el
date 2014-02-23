@@ -80,6 +80,11 @@
 
   (defun make-current-the-active-project ()
     (interactive)
+  (defun make-current-the-active-project ()
+    (interactive)
+    (setq active-project
+	  (when (y-or-n-p (format "Make %s the active project?" default-directory))
+	    (setq active-project default-directory))))
     (setq active-project
 	  (when (y-or-n-p (format "Make %s the active project?" default-directory))
 	    (setq active-project default-directory))))
@@ -225,8 +230,6 @@
   (add-to-list 'load-path (f-expand "vendor/Enhanced-Ruby-Mode/" dotfiles-dir))
   (add-to-list 'load-path (f-expand "vendor/emacs-pry/" dotfiles-dir)))
 
-
-
 (require 'ruby-mode)
 (require 'pry)
 (add-hook 'ruby-mode-hook 'projectile-mode)
@@ -241,6 +244,7 @@
 (dired-details-install)
 
 (turn-on-undo-tree-mode)
+
 (require 'sws-mode)
 (require 'jade-mode)
 
